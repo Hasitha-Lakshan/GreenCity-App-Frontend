@@ -1,0 +1,15 @@
+.search-bar {
+    background-color: #186d3e;
+}
+
+.search-btn:hover,
+.search-btn:focus {
+    background-color: #d2ff00 !important;
+    color: #186d3e !important;
+}
+
+
+#mapBtn {
+    background-color: #778c17;
+    color: white;
+}

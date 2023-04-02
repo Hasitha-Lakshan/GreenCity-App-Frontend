@@ -1,0 +1,33 @@
+.navbar {
+    background-color: #186d3e !important;
+    border-bottom: 2px solid #e1edc5;
+}
+
+.nav-link {
+    color: #e1edc5 !important;
+    font-weight: 500;
+}
+
+.nav-item :hover {
+    color: #d2ff00 !important;
+}
+
+.nav-link:focus {
+    color: #d2ff00 !important;
+    font-weight: 500;
+}
+
+li {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    border: 1px solid #778c17;
+    border-radius: .25rem;
+}
+
+.sign-up {
+    cursor: pointer;
+}

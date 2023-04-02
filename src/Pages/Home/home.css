@@ -1,0 +1,14 @@
+#main_banner img {
+    width: 100%;
+}
+
+#mapButton {
+    box-shadow: none;
+    background-color: #778c17;
+}
+
+#collectionCenterLink {
+    background-color: #778c17;
+    color: white;
+    text-align: center;
+}
