@@ -1,6 +1,7 @@
 import axios from "axios";
 import { CollectionCenterRegisterRequest, LoginRequest, LoginResponse, RegisterResponse, UserRegisterRequest } from "../models/authModel";
 import { apiEndpoint } from "../api-end-points/api-end-points";
+import { isExpired } from "react-jwt";
 
 /**
  * This function is used to register user using api-end-point
@@ -57,14 +58,17 @@ export const logout = () => {
   localStorage.removeItem("centerProfile");
 };
 
-
+/**
+ * This function is used to check jwt validation
+ * @returns : login status
+ */
 export const getLoginStatus = () => {
-  if (localStorage.getItem("authenticationToken")) {
-    return true;
+  const jwt = localStorage.getItem("authenticationToken");
+  if (jwt) {
+    return !isExpired(jwt);
   } else {
     return false;
   }
 }
-
 
 export const AuthService = { userSignUp, collectionCenterSignUp, login };
