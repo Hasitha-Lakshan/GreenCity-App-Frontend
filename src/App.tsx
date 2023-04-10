@@ -3,8 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Core/Header/Header"
 import Footer from "./Core/Footer/Footer"
 import Home from "./Pages/Home/Home"
-import UserSignUp from "./Pages/register/user-signup/UserSignup"
-import CollectionCenterSignUp from "./Pages/register/collection-center-signup/CollectionCenterSignup"
+import UserSignUp from "./Pages/signup/user-signup/UserSignup"
+import CollectionCenterSignUp from "./Pages/signup/collection-center-signup/CollectionCenterSignup"
 
 
 import './App.css';
