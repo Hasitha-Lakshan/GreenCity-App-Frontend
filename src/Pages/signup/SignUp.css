@@ -1,0 +1,8 @@
+.login-link:hover {
+    cursor: pointer;
+    color: #186d3e !important;
+}
+
+.sign-up-icon {
+    width: 350px;
+}
