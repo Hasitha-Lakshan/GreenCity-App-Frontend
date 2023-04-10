@@ -6,15 +6,9 @@ import SignupModal from "../../Modal/SignupModal"
 import { Link, useNavigate } from "react-router-dom"
 import logo from "../../assets/Images/greencity_logo.png"
 
-const style = {
-    brand_name: {
-        color: "#778c17",
-        fontSize: "24px",
-    },
-}
-
 const Header = (props: any) => {
-    const currentUser = profileManagementService.getCurrentUser();
+    const currentUser = localStorage.getItem('username');
+    const currentUserRole = localStorage.getItem('userRole');
     const navigate = useNavigate();
     const { loginStatus } = props;
     const [showSignUpModal, setShowSignUpModal] = useState(false);
@@ -25,15 +19,14 @@ const Header = (props: any) => {
     };
 
     const profile = () => {
-        const userData = localStorage.getItem("userData");
-        if (userData) {
-            const userDataObj = JSON.parse(userData);
-            const userName = userDataObj.username;
-            const userRole = userDataObj.userRole;
+        const username = localStorage.getItem("username");
+        const userRole = localStorage.getItem("userRole");
+
+        if (username && userRole) {
             if (userRole === "USER") {
-                profileManagementService.userProfileDetails(userName, userRole)
+                profileManagementService.userProfileDetails(username, userRole);
             } else if (userRole === "COLLECTION_CENTER") {
-                profileManagementService.collectionCenterProfileDetails(userName, userRole)
+                profileManagementService.collectionCenterProfileDetails(userRole, userRole);
             }
         }
     }
@@ -59,8 +52,8 @@ const Header = (props: any) => {
                             {
                                 loginStatus ? (
                                     <li className="nav-item mt-2">
-                                        {currentUser.userRole === "USER" ? (<Link className="nav-link" to='customer/request'>Request</Link>)
-                                            : currentUser.userRole === "COLLECTION_CENTER" ? (<Link className="nav-link" to='collectionRequest/requestDashboard'>Collection Request</Link>)
+                                        {currentUserRole === "USER" ? (<Link className="nav-link" to='customer/request'>Request</Link>)
+                                            : currentUserRole === "COLLECTION_CENTER" ? (<Link className="nav-link" to='collectionRequest/requestDashboard'>Collection Request</Link>)
                                                 : <></>}
                                     </li>
                                 ) : <></>
@@ -69,7 +62,7 @@ const Header = (props: any) => {
                             {
                                 loginStatus ? (
                                     <li className="nav-item mt-2">
-                                        <Link className="nav-link" to={{ pathname: "/userProfile/" + currentUser.username }} onClick={() => profile()}>{currentUser.username}</Link>
+                                        <Link className="nav-link" to={{ pathname: "/userProfile/" + currentUser }} onClick={() => profile()}>{currentUser}</Link>
                                     </li>
                                 ) : <></>
 

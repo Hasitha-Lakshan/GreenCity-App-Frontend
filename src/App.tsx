@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Core/Header/Header"
 import Footer from "./Core/Footer/Footer"
@@ -6,22 +6,16 @@ import Home from "./Pages/Home/Home"
 import UserSignUp from "./Pages/signup/user-signup/UserSignup"
 import CollectionCenterSignUp from "./Pages/signup/collection-center-signup/CollectionCenterSignup"
 
-
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import Login from './Pages/Login/Login';
+import { Login } from './Pages/Login/Login';
 
 import * as authService from './shared/services/auth.service';
-import * as profileManagementService from '../src/services/profileManagement.service';
 
-// import BoardAdmin from './Pages/Admin/admin';
 import CollectionCenter from './Pages/CollectionCenter/center';
 import CollectionCenter_update from './Pages/CollectionCenter/collectionCenter_update';
 import CollectionRequest_requirement from './Pages/CollectionRequest/collectionRequest_requirement/collectionRequest_requirement';
 import RequestDashboard from './Pages/CollectionRequest/collectionRequestDashboard/requestDashboard';
-import InprogressRequest from './Pages/CollectionRequest/inprogressRequest/inprogressRequest';
-import ActiveRequest from './Pages/CollectionRequest/activeRequest/activeRequest';
-import CompleteRequest from './Pages/CollectionRequest/completeRequest/completeRequest';
 import CollectionRequestDetails from './Pages/CollectionRequest/collectionRequestDetails/collectionRequestDetails';
 import Request from './Pages/Request/request';
 import CustomerActiveRequest from "./Pages/Request/active_request/active_request";
@@ -35,7 +29,7 @@ import Request_details from './Pages/Request/request_details/request_details';
 import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
 
 function App() {
-  const currentUserRole = profileManagementService.getCurrentUser();
+  const currentUserRole = localStorage.getItem("userRole");
   const [loginStatus, setLoginStatus] = useState(false);
 
   useEffect(() => {
@@ -56,25 +50,25 @@ function App() {
           <Route path="signup/userSignup" element={<UserSignUp />} />
           <Route path="signup/centerSignup" element={<CollectionCenterSignUp />} />
           {loginStatus ? <Route path="userProfile/:userName" element={
-            currentUserRole.userRole === "USER" ? (<CustomerProfile />) :
-              currentUserRole.userRole === "COLLECTION_CENTER" ? (<CollectionCenterProfile />) : <></>
+            currentUserRole === "USER" ? (<CustomerProfile />) :
+              currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenterProfile />) : <></>
           } />
             : <Route path="/" element={<Home />}
             />}
           <Route path="collectionCenter" element={<CollectionCenter loginStatus={loginStatus} loginStatusHandler={loginStatusHandler} />} />
           {loginStatus ? <Route path="userProfile/:userName/collectionCenter_addDetail" element={
-            currentUserRole.userRole === "COLLECTION_CENTER" ? (<CollectionCenter_addDetails />) : <></>
+            currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenter_addDetails />) : <></>
           } />
             : <Route path="/" element={<Home />}
             />}
           {loginStatus ? <Route path="userProfile/:userName/customer_update" element={
-            currentUserRole.userRole === "USER" ? (<Customer_update />) : <></>
+            currentUserRole === "USER" ? (<Customer_update />) : <></>
           } />
             : <Route path="/" element={<Home />}
             />}
 
           {loginStatus ? <Route path="userProfile/:userName/collectionCenter_update" element={
-            currentUserRole.userRole === "COLLECTION_CENTER" ? (<CollectionCenter_update />) : <></>
+            currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenter_update />) : <></>
           } />
             : <Route path="/" element={<Home />}
             />}
