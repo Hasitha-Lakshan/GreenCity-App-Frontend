@@ -27,6 +27,7 @@ import CollectionCenter_addDetails from './Pages/CollectionCenter/collectionCent
 import Customer_update from './Pages/Customer/customer_update';
 import Request_details from './Pages/Request/request_details/request_details';
 import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
+import { SignUp } from './Pages/signup/SignUp';
 
 function App() {
   const currentUserRole = localStorage.getItem("userRole");
@@ -47,8 +48,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home loginStatus={loginStatus} loginStatusHandler={loginStatusHandler} />} />
           <Route path='login' element={<Login loginStatusHandler={loginStatusHandler} />} />
-          <Route path="signup/userSignup" element={<UserSignUp />} />
-          <Route path="signup/centerSignup" element={<CollectionCenterSignUp />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="signup/user-signup" element={<UserSignUp />} />
+          <Route path="signup/collection-center-signup" element={<CollectionCenterSignUp />} />
           {loginStatus ? <Route path="userProfile/:userName" element={
             currentUserRole === "USER" ? (<CustomerProfile />) :
               currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenterProfile />) : <></>

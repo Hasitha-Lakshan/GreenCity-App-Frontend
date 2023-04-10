@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from "yup";
 import "./login.css"
-import SignupModal from "../../Modal/SignupModal"
 import { LoginRequest } from '../../shared/models/authModel';
 import { AuthService } from '../../shared/services/auth.service';
 
@@ -24,9 +23,6 @@ export const Login = (props: any) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   let navigate: NavigateFunction = useNavigate();
-
-  // show/hide sign-up modal
-  const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   /**
    * This function is used to authenticate users with username and password and
@@ -85,9 +81,8 @@ export const Login = (props: any) => {
               </form>
               <div>
                 <p className="mb-0 mt-5">Don't have an account?
-                  <a className="text-dark fw-bold sign-up-link" onClick={() => { setShowSignUpModal(true) }}> Sign Up</a>
+                  <Link className="text-dark fw-bold sign-up-link" to='/signup'> Sign Up</Link>
                 </p>
-                <SignupModal show={showSignUpModal} onHide={() => setShowSignUpModal(false)} />
               </div>
             </div>
           </div>
