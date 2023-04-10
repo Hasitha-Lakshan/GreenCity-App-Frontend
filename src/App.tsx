@@ -32,6 +32,7 @@ import CollectionCenterProfile from './Pages/User/Profile/collectionCenterProfil
 import CollectionCenter_addDetails from './Pages/CollectionCenter/collectionCenter_addDetails';
 import Customer_update from './Pages/Customer/customer_update';
 import Request_details from './Pages/Request/request_details/request_details';
+import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
 
 function App() {
   const currentUserRole = profileManagementService.getCurrentUser();
@@ -40,11 +41,6 @@ function App() {
   useEffect(() => {
     setLoginStatus(authService.getLoginStatus());
   }, [loginStatus]);
-
-  // to reset scroll to top after refresh
-  useEffect(() => {
-    window.history.scrollRestoration = 'manual';
-  }, [])
 
   const loginStatusHandler = (value: boolean) => {
     setLoginStatus(value);
@@ -96,6 +92,7 @@ function App() {
         </Routes>
       </div>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
