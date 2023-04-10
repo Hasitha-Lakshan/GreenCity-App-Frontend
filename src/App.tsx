@@ -3,15 +3,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Core/Header/Header"
 import Footer from "./Core/Footer/Footer"
 import Home from "./Pages/Home/Home"
-import UserSignup from "./Pages/SignUp/Components/UserSignup"
-import CcenterSignup from "./Pages/SignUp/Components/CcenterSignup"
+import UserSignUp from "./Pages/register/user-signup/UserSignup"
+import CollectionCenterSignUp from "./Pages/register/collection-center-signup/CollectionCenterSignup"
 
 
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Login from './Pages/Login/Login';
 
-import * as authService from '../src/services/auth.service';
+import * as authService from './shared/services/auth.service';
 import * as profileManagementService from '../src/services/profileManagement.service';
 
 // import BoardAdmin from './Pages/Admin/admin';
@@ -53,8 +53,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home loginStatus={loginStatus} loginStatusHandler={loginStatusHandler} />} />
           <Route path='login' element={<Login loginStatusHandler={loginStatusHandler} />} />
-          <Route path="signup/userSignup" element={<UserSignup />} />
-          <Route path="signup/centerSignup" element={<CcenterSignup />} />
+          <Route path="signup/userSignup" element={<UserSignUp />} />
+          <Route path="signup/centerSignup" element={<CollectionCenterSignUp />} />
           {loginStatus ? <Route path="userProfile/:userName" element={
             currentUserRole.userRole === "USER" ? (<CustomerProfile />) :
               currentUserRole.userRole === "COLLECTION_CENTER" ? (<CollectionCenterProfile />) : <></>

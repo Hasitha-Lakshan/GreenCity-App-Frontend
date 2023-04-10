@@ -9,7 +9,7 @@ import banner_xl from '../../assets/Images/main_banner.png';
 import CollectionCenterList from './CollectionCenterList/CollectionCenterList';
 import MapModal from '../../Modal/MapModal';
 import { useNavigate } from 'react-router-dom';
-import * as authService from "../../services/auth.service"
+import * as authService from "../../shared/services/auth.service"
 import { getcollectionCenterList } from '../../services/public.service';
 
 
@@ -60,7 +60,7 @@ const Home = (props: any) => {
                   </div>
               }
               {/* pagination */}
-              {
+              {/* {
                 collectionCenterList.length > 0 ? (
                   <nav className='mt-5' aria-label="Page navigation example">
                     <ul className="pagination pagination-sm justify-content-center">
@@ -80,7 +80,7 @@ const Home = (props: any) => {
                     </ul>
                   </nav>
                 ) : <></>
-              }
+              } */}
             </div>
         }
       </div>
