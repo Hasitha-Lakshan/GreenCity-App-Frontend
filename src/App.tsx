@@ -24,7 +24,7 @@ import Customer_update from './Pages/Customer/customer_update';
 import Request_details from './Pages/Request/request_details/request_details';
 import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
 import { SignUp } from './Pages/signup/SignUp';
-import { CollectionCenterProfile } from './Pages/Profile/collection-center-profile/CenterProfile';
+import { CollectionCenterProfile } from './Pages/Profile/collection-center-profile/CollectionCenterProfile';
 
 function App() {
   const currentUserRole = localStorage.getItem("userRole");
