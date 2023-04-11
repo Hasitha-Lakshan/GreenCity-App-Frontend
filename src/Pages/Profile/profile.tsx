@@ -1,7 +1,5 @@
-import React from "react";
 import { getLoginStatus } from "../../shared/services/auth.service";
 import { getCurrentUser } from "../../services/profileManagement.service";
-
 
 const Profile = () => {
   const currentUser = getCurrentUser();
