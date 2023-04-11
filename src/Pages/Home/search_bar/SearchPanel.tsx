@@ -1,7 +1,7 @@
 import { useState } from "react";
-import './search_bar.css';
+import './SearchPanel.css';
 
-export const Search_bar = (props: any) => {
+export const SearchPanel = (props: any) => {
     const [location, setLocation] = useState<string>("")
     const [wasteType, setWasteType] = useState<string>("")
 
@@ -41,6 +41,5 @@ export const Search_bar = (props: any) => {
     )
 }
 
-export default Search_bar;
 
 

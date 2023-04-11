@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { CollectionCenterRegisterRequest } from '../../../shared/models/authModel'
 import { AuthService } from '../../../shared/services/auth.service'
 
-const CollectionCenterSignUp = () => {
+export const CollectionCenterSignUp = () => {
   const collectionCenterSignUpConfig = { title: 'SIGN UP - COLLECTION CENTER' }
   const navigate = useNavigate();
   const [message, setMessage] = useState<string>("");
@@ -108,4 +108,3 @@ const CollectionCenterSignUp = () => {
   )
 }
 
-export default CollectionCenterSignUp

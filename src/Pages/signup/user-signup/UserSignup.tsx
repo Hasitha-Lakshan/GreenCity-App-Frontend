@@ -6,7 +6,7 @@ import { AuthService } from '../../../shared/services/auth.service'
 import { useNavigate } from 'react-router-dom'
 import { UserRegisterRequest } from '../../../shared/models/authModel'
 
-const UserSignUp = () => {
+export const UserSignUp = () => {
   const userSignUpConfig = { title: 'SIGN UP - USER' }
   const navigate = useNavigate();
   const [message, setMessage] = useState<string>("");
@@ -114,4 +114,3 @@ const UserSignUp = () => {
   )
 }
 
-export default UserSignUp

@@ -2,16 +2,13 @@ import { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Core/Header/Header"
 import Footer from "./Core/Footer/Footer"
-import Home from "./Pages/Home/Home"
-import UserSignUp from "./Pages/signup/user-signup/UserSignup"
-import CollectionCenterSignUp from "./Pages/signup/collection-center-signup/CollectionCenterSignup"
-
+import { Home } from "./Pages/Home/Home"
+import { UserSignUp } from "./Pages/signup/user-signup/UserSignup"
+import { CollectionCenterSignUp } from "./Pages/signup/collection-center-signup/CollectionCenterSignup"
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Login } from './Pages/Login/Login';
-
 import * as authService from './shared/services/auth.service';
-
 import CollectionCenter from './Pages/CollectionCenter/center';
 import CollectionCenter_update from './Pages/CollectionCenter/collectionCenter_update';
 import CollectionRequest_requirement from './Pages/CollectionRequest/collectionRequest_requirement/collectionRequest_requirement';
@@ -37,6 +34,10 @@ function App() {
     setLoginStatus(authService.getLoginStatus());
   }, [loginStatus]);
 
+  /**
+   * This function is used to handle login status
+   * @param value : status
+   */
   const loginStatusHandler = (value: boolean) => {
     setLoginStatus(value);
   };
@@ -46,34 +47,13 @@ function App() {
       <Header loginStatus={loginStatus} loginStatusHandler={loginStatusHandler}></Header>
       <div className="content p-0">
         <Routes>
-          <Route path="/" element={<Home loginStatus={loginStatus} loginStatusHandler={loginStatusHandler} />} />
+          <Route path="/" element={<Home />} />
           <Route path='login' element={<Login loginStatusHandler={loginStatusHandler} />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="signup/user-signup" element={<UserSignUp />} />
           <Route path="signup/collection-center-signup" element={<CollectionCenterSignUp />} />
-          {loginStatus ? <Route path="userProfile/:userName" element={
-            currentUserRole === "USER" ? (<CustomerProfile />) :
-              currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenterProfile />) : <></>
-          } />
-            : <Route path="/" element={<Home />}
-            />}
-          <Route path="collectionCenter" element={<CollectionCenter loginStatus={loginStatus} loginStatusHandler={loginStatusHandler} />} />
-          {loginStatus ? <Route path="userProfile/:userName/collectionCenter_addDetail" element={
-            currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenter_addDetails />) : <></>
-          } />
-            : <Route path="/" element={<Home />}
-            />}
-          {loginStatus ? <Route path="userProfile/:userName/customer_update" element={
-            currentUserRole === "USER" ? (<Customer_update />) : <></>
-          } />
-            : <Route path="/" element={<Home />}
-            />}
-
-          {loginStatus ? <Route path="userProfile/:userName/collectionCenter_update" element={
-            currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenter_update />) : <></>
-          } />
-            : <Route path="/" element={<Home />}
-            />}
+          <Route path="collectionCenter" element={<CollectionCenter />} />
+          <Route path="profile/:userName/update" element={<CollectionCenter_addDetails />} />
           <Route path='collectionRequest/collectionRequest_requirement' element={<CollectionRequest_requirement />} />
           <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
           <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />
@@ -82,9 +62,12 @@ function App() {
           <Route path='customer/request/activeRequest' element={<CustomerActiveRequest />} />
           <Route path='customer/request/cancelRequest' element={<CustomerCancelRequest />} />
           <Route path='customer/request/completeRequest' element={<CustomerCompleteRequest />} />
-
-
-          {/* <Route path="admin" element={<BoardAdmin />} /> */}
+          {/* profile route for user and collection center */}
+          <Route path="profile/:userName"
+            element={currentUserRole === "USER" ? (<CustomerProfile />) : currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenterProfile />) : ''} />
+          {/* profile details route for user and collection center */}
+          <Route path="profile/:userName/settings"
+            element={currentUserRole === "USER" ? (<Customer_update />) : currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenter_update />) : ''} />
         </Routes>
       </div>
       <Footer />
