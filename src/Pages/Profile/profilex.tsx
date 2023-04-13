@@ -3,7 +3,7 @@ import { AuthService } from '../../shared/services/auth.service'
 import { useNavigate } from "react-router-dom";
 import { ProfileManagementService } from "../../shared/services/profileManagement.service";
 import { CollectionCenterProfile } from "./collection-center-profile/CollectionCenterProfile";
-import { CustomerProfile } from "./customerProfile/customerProfile";
+import { CustomerProfile } from "./user-profile/UserProfile";
 import { CollectionCenterDetailsResponse, CollectionCenterSettingsResponse, ProfileRequest, UserSettingsResponse } from "../../shared/models/profileModel";
 import './Profile.css';
 

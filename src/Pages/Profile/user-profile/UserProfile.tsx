@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import thumbnail from "../../../assets/Images/customer_profile.svg"
-import "./customerProfile.css"
+import "./UserProfile.css"
 
 export const CustomerProfile = (props: any) => {
   const { profileSettings } = props;
