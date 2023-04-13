@@ -7,7 +7,7 @@ import { UserSignUp } from "./Pages/signup/user-signup/UserSignup"
 import { CollectionCenterSignUp } from "./Pages/signup/collection-center-signup/CollectionCenterSignup"
 import './App.css';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { Login } from './Pages/loginx/Login';
+import { Login } from './Pages/login/Login';
 import CollectionCenter from './Pages/CollectionCenter/center';
 import CollectionCenter_update from './Pages/profile/modals/collection-center-profile-settings/collectionCenter_update';
 import CollectionRequest_requirement from './Pages/CollectionRequest/collectionRequest_requirement/collectionRequest_requirement';
