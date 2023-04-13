@@ -54,11 +54,6 @@ export const CustomerProfile = (props: any) => {
               </div>
             </div>
             <hr className="my-2" />
-            <div className="row">
-              <div className="col col-xl-3 col-lg-3 col-sm-4 text-secondary"><h5>Location :</h5></div>
-              <div className="col"><h5>{profileSettings.location}</h5></div>
-            </div>
-            <hr />
           </div>
         </div>
       </div>
