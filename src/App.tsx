@@ -60,7 +60,6 @@ function App() {
           <Route path="signup/user-signup" element={<UserSignUp />} />
           <Route path="signup/collection-center-signup" element={<CollectionCenterSignUp />} />
           <Route path="collectionCenter" element={<CollectionCenter />} />
-          <Route path="profile/:userName/update" element={<CollectionCenter_addDetails />} />
           <Route path='collectionRequest/collectionRequest_requirement' element={<CollectionRequest_requirement />} />
           <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
           <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />
@@ -73,6 +72,7 @@ function App() {
           {/* profile details route for user and collection center */}
           <Route path="profile/:userName/settings"
             element={currentUserRole === "USER" ? (<Customer_update />) : currentUserRole === "COLLECTION_CENTER" ? (<CollectionCenter_update />) : ''} />
+          <Route path="profile/:userName/details" element={<CollectionCenter_addDetails />} />
         </Routes>
       </div>
       <Footer />

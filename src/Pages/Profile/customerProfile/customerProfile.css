@@ -1,7 +1,6 @@
-#profile_picture {
+/* #profile_picture {
     width: 250px;
     height: 250px;
-    border: 1px solid black;
 }
 
 #profile_settings {
@@ -13,10 +12,6 @@
 }
 
 @media screen and (max-width: 768px) {
-    h3 {
-        text-align: center;
-    }
-
     #profile_picture_position {
         text-align: center;
     }
@@ -41,4 +36,4 @@
     h6 {
         font-size: 14px;
     }
-}
+} */
