@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ProfileManagementService } from "../../shared/services/profileManagement.service";
 import { CollectionCenterProfile } from "./collection-center-profile/CollectionCenterProfile";
 import { CustomerProfile } from "./user-profile/UserProfile";
-import { CollectionCenterDetailsResponse, CollectionCenterSettingsResponse, ProfileRequest, UserSettingsResponse } from "../../shared/models/profileModel";
+import { CollectionCenterDetailsResponse, CollectionCenterSettingsResponse, CollectionCenterSettingsUpdateRequest, ProfileRequest, UserSettingsResponse } from "../../shared/models/profileModel";
 import './Profile.css';
 
 export const Profile = () => {
@@ -55,11 +55,21 @@ export const Profile = () => {
     }
   }, [])
 
+  /**
+   * This function is used to update collection center settings
+   * @param updatedSettings : CollectionCenterSettingsUpdateRequest
+   */
+  const updateCollectionCenterSettings = (updatedSettings: CollectionCenterSettingsUpdateRequest) => {
+    if (updatedSettings && collectionCenterSettings) {
+      setCollectionCenterSettings({ ...collectionCenterSettings, ...updatedSettings })
+    }
+  }
+
   return (
     <div className="container mt-5">
       {
         userRole === 'COLLECTION_CENTER' && collectionCenterSettings ? <CollectionCenterProfile profileSettings={collectionCenterSettings}
-          profileDetails={collectionCenterDetails} />
+          profileDetails={collectionCenterDetails} settingsUpdateHandler={updateCollectionCenterSettings} />
           : userRole === 'USER' && userSettings ? <CustomerProfile profileSettings={userSettings} /> : <></>
       }
     </div>
