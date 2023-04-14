@@ -1,81 +1,67 @@
-import center from "../../assets/Images/Collection_center_thumbnail.png";
+import thumbnail from "../../assets/Images/collection_center_details_thumbnail.png";
 import "./CollectionCenterDetails.css";
-import { useNavigate, useLocation, useParams } from "react-router-dom";
-// import { collectionCenterProfileDetails, getCurrentCollectionCenterProfileDetails } from "../../shared/services/profileManagement.service";
-import { collectionCenterProfileDetailsPublic } from "../../shared/services/public.service";
+import { useNavigate, useParams } from "react-router-dom";
+import { PublicService } from "../../shared/services/public.service";
+import { CollectionCenterDetailsResponse } from "../../shared/models/publicModals";
+import { useEffect, useState } from "react";
 
-export const CollectionCenterDetails = (props: any) => {
-
-
+export const CollectionCenterDetails = () => {
   const { username } = useParams();
+  const [collectionCenterDetails, setCollectionCenterDetails] = useState<CollectionCenterDetailsResponse>();
+  const navigate = useNavigate();
 
-  console.log(username);
 
-
-  let navigate = useNavigate();
-  // const { loginStatus } = props;
-  // const location = useLocation();
-  // const username = location.state.parameter;
-
-  // collectionCenterProfileDetailsPublic(username, "COLLECTION_CENTER");
-  // useEffect(() => {
-
-  // const collectionCenterDetails = getCurrentCollectionCenterProfileDetails();
-  // },[])
-
-  const onClickRequest = () => {
-    // if (loginStatus) {
-    //   // navigate("/collectionRequest/collectionRequest_requirement",
-    //   //   { state: { parameter: collectionCenterDetails.username } });
-    // } else
-    //   alert("Please Login Your Profile")
-  }
+  useEffect(() => {
+    /**
+     * This function is used to get collection center details using collection center username
+     * @param collectionCenterUsername : string
+     */
+    const getCollectionCenterDetails = async (collectionCenterUsername: string) => {
+      try {
+        const collectionCenterDetailsResponse = await PublicService.getCollectionCenterDetails(collectionCenterUsername);
+        if (collectionCenterDetailsResponse) {
+          setCollectionCenterDetails(collectionCenterDetailsResponse);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    if (username) {
+      getCollectionCenterDetails(username);
+    }
+  }, [username])
 
   return (
     <>
-      <p>ddddddddddddddddddd</p>
-      {/* <div id="main_banner">
-         <img src={banner} alt="" />
-        
-      </div> */}
-      <div className="container mt-4">
-        <div>
-          {/* <h2>Center Name : {collectionCenterDetails.centerName}</h2> */}
-          <p>Created On: | Created By:</p>
-        </div>
-
+      <div className="container my-5 collection-center-details">
         <div className="row mx-auto">
-          <div id="shopPicture" className="col-xl-6 col-lg-6 col-md-9 col-sm-12 px-0 my-auto">
-            <img src={center} className="w-100 h-500 " />
+          <h3>{collectionCenterDetails?.centerName}</h3>
+          <div className="col-xxl-5 col-xl-6 col-lg-7 col-md-12 col-sm-12 mt-2 mb-4">
+            <img src={thumbnail} className="w-100 h-500 rounded" alt='collection-center-details-thumbnail' />
           </div>
-          <div className="col-xl-6 col-md-3 col-lg-6 col-sm-12 p-0 my-auto">
+          <div className="col-xxl-7 col-xl-6 col-lg-5 col-md-12  col-sm-12 p-0 my-auto mt-2 mb-4 collection-center-detail-list">
             <ul className="list-group text-center">
-              <li className="list-group-item text-light p-1 title">Category</li>
-              {/* <li className="list-group-item p-2 data">{collectionCenterDetails.wastetype} - */}
-              {/* Rs.{collectionCenterDetails.payment} for 1kg</li> */}
+              <li className="list-group-item text-light p-1 title">Waste Type</li>
+              <li className="list-group-item p-2 data text-truncate">{collectionCenterDetails?.wasteType} - Rs.{collectionCenterDetails?.payment} for 1kg</li>
               <li className="list-group-item text-light p-1 title">Address</li>
-              {/* <li className="list-group-item p-2 data">{collectionCenterDetails.addressLine1} , */}
-              {/* {collectionCenterDetails.addressLine2} , */}
-              {/* {collectionCenterDetails.addressLine3}</li> */}
+              <li className="list-group-item p-2 data text-truncate">{`${collectionCenterDetails?.addressLine1}, ${collectionCenterDetails?.addressLine2}, ${collectionCenterDetails?.addressLine3}`}</li>
               <li className="list-group-item text-light p-1 title">Location</li>
-              {/* <li className="list-group-item p-2 data">{collectionCenterDetails.location}</li> */}
-              <li className="list-group-item text-light p-1 title">Contact Details</li>
-              {/* <li className="list-group-item p-2 data">{collectionCenterDetails.contactNumber}</li> */}
-              {/* <li className="list-group-item p-2 data">{collectionCenterDetails.email}</li> */}
+              <li className="list-group-item p-2 data text-truncate">{collectionCenterDetails?.location}</li>
+              <li className="list-group-item text-light p-1 title">Contact Number</li>
+              <li className="list-group-item p-2 data text-truncate">{collectionCenterDetails?.contactNumber}</li>
               <li className="list-group-item text-light p-1 title">Working days</li>
-              <li className="list-group-item p-2 data">Weekdays</li>
+              <li className="list-group-item p-2 data text-truncate">{collectionCenterDetails?.workingDays?.toString()}</li>
             </ul>
           </div>
         </div>
 
-        <div id="description" className="row mt-3 mx-0">
+        <div className="row mt-3 mx-0 description">
           <h4 className="col py-3 text-center">Description</h4>
         </div>
-        <div>
-          {/* <p className="text-justify p-3 py-1">{collectionCenterDetails.description}</p> */}
-        </div>
-        <div>
-          <button className="btn btn-dark btn-block px-3 mb-3 mt-1" onClick={onClickRequest}> Request PickUp  </button>
+        <p className="text-justify p-3 py-3">{collectionCenterDetails?.description}</p>
+        <div className="d-grid gap-2 mx-auto mt-4">
+          <button className="btn btn-dark px-3 mb-3 mt-1 btn-custom-1 py-3" type="button"
+            onClick={() => navigate("/pickupRequest", { state: { parameter: username } })}>Request a PickUp</button>
         </div>
       </div>
     </>
