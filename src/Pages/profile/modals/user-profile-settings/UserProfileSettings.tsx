@@ -125,7 +125,7 @@ export const UserProfileSettings = (props: any) => {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" onClick={hideModal}>Close</button>
-                            <button type="button" className="btn btn-primary" onClick={handleSubmit(updateUserSettings)}>Save changes</button>
+                            <button type="button" className="btn btn-dark btn-custom-1" onClick={handleSubmit(updateUserSettings)}>Save changes</button>
                         </div>
                     </div>
                 </div>
