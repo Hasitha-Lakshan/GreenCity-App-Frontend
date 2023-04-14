@@ -15,7 +15,7 @@ const Header = (props: any) => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-md fixed-top sticky-top shadow py-0">
+            <nav className="navbar navbar-expand-lg navbar-dark sticky-top shadow">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to='/'> <img src={logo} alt="" height="60" /></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -36,7 +36,6 @@ const Header = (props: any) => {
                                     </li>
                                 ) : <></>
                             }
-
                             {
                                 loginStatus ? (
                                     <li className="nav-item mt-2">
