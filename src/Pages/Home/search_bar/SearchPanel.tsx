@@ -17,10 +17,10 @@ export const SearchPanel = (props: any) => {
             <div className="container">
                 <h6 className='pb-2 text-white'>FIND YOUR COLLECTION CENTER</h6>
                 <div className="row mb-3">
-                    <div className="col-md-6 ">
+                    <div className="col-md-6 mb-2">
                         <input type="search" className={'form-control'} placeholder="Location" onChange={(e) => setLocation(e.target.value)} />
                     </div>
-                    <div className="col-md-4 justify-content-md-center">
+                    <div className="col-md-4 justify-content-md-center mb-3">
                         <select className="form-select" aria-label="Default select example" onChange={(e) => setWasteType(e.target.value)}>
                             <option value="">Waste Type</option>
                             <option value="Plastic">Plastic </option>
