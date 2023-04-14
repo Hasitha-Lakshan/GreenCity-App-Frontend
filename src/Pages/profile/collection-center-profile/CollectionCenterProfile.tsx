@@ -11,7 +11,7 @@ export const CollectionCenterProfile = (props: any) => {
     const [showDetailsModal, setShowDetailsModal] = useState(false);
 
     /**
-     * This function is used to hide open modals
+     * This function is used to hide opened modals
      */
     const hideModals = () => {
         setShowSettingsModal(false);

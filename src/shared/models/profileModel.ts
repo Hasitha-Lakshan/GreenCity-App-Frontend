@@ -24,7 +24,7 @@ export interface UserSettingsResponse {
     username: string;
     firstName: string;
     lastName: string;
-    contactNumber: number;
+    contactNumber: string;
     email: string;
     addressLine1: string;
     addressLine2: string;
@@ -64,4 +64,14 @@ export interface CollectionCenterDetailsUpdateRequest {
     payment: string;
     description: string;
     active: boolean;
+}
+
+export interface UserSettingsUpdateRequest {
+    username: string;
+    firstName: string;
+    lastName: string;
+    contactNumber: string;
+    addressLine1: string;
+    addressLine2: string;
+    addressLine3: string;
 }

@@ -3,8 +3,8 @@ import { AuthService } from '../../shared/services/auth.service'
 import { useNavigate } from "react-router-dom";
 import { ProfileManagementService } from "../../shared/services/profileManagement.service";
 import { CollectionCenterProfile } from "./collection-center-profile/CollectionCenterProfile";
-import { CustomerProfile } from "./user-profile/UserProfile";
-import { CollectionCenterDetailsResponse, CollectionCenterDetailsUpdateRequest, CollectionCenterSettingsResponse, CollectionCenterSettingsUpdateRequest, ProfileRequest, UserSettingsResponse } from "../../shared/models/profileModel";
+import { UserProfile } from "./user-profile/UserProfile";
+import { CollectionCenterDetailsResponse, CollectionCenterDetailsUpdateRequest, CollectionCenterSettingsResponse, CollectionCenterSettingsUpdateRequest, ProfileRequest, UserSettingsResponse, UserSettingsUpdateRequest } from "../../shared/models/profileModel";
 import './Profile.css';
 
 export const Profile = () => {
@@ -62,13 +62,23 @@ export const Profile = () => {
     }
   }
 
+  /**
+   * This function is used to update collection center settings
+   * @param updatedSettings : CollectionCenterSettingsUpdateRequest
+   */
+  const updateUserSettings = (updatedSettings: UserSettingsUpdateRequest) => {
+    if (updatedSettings && userSettings) {
+      setUserSettings({ ...userSettings, ...updatedSettings })
+    }
+  }
+
   return (
     <div className="container mt-5">
       {
         userRole === 'COLLECTION_CENTER' && collectionCenterSettings ?
           <CollectionCenterProfile profileSettings={collectionCenterSettings} profileDetails={collectionCenterDetails}
             settingsUpdateHandler={updateCollectionCenterSettings} detailsUpdateHandler={updateCollectionCenterDetails} />
-          : userRole === 'USER' && userSettings ? <CustomerProfile profileSettings={userSettings} /> : <></>
+          : userRole === 'USER' && userSettings ? <UserProfile profileSettings={userSettings} settingsUpdateHandler={updateUserSettings} /> : <></>
       }
     </div>
   );
