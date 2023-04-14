@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import './home.css';
-import { SearchPanel } from './search_bar/SearchPanel'
+import './homex.css';
+import { SearchPanel } from './search-panel/SearchPanel'
 import banner_xl from '../../assets/Images/main_banner.png';
-import { CollectionCenterList } from './CollectionCenterList/CollectionCenterList';
+import { CollectionCenterList } from './collection-center-list/CollectionCenterList';
 import MapModal from '../../Modal/MapModal';
 import { PublicService } from '../../shared/services/public.service';
 import { CollectionCenterSummary } from '../../shared/models/homeModals';
