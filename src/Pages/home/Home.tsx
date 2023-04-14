@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './homex.css';
+import './Home.css';
 import { SearchPanel } from './search-panel/SearchPanel'
 import banner_xl from '../../assets/Images/main_banner.png';
 import { CollectionCenterList } from './collection-center-list/CollectionCenterList';
