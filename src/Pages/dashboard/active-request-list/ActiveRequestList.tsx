@@ -1,19 +1,11 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import "./inprogress_request.css"
+import "./ActiveRequestList.css"
 
-const InprogressRequest = () => {
-    const navigate = useNavigate()
-
-    const onRequestConfirm = () => {
-        navigate('customer/requestDetails')
-    }
-
+export const ActiveRequestList = () => {
     return (
         <>
             <div className="container mt-5 mb-5">
                 <div className="dashboard-header py-3 text-light text-center mb-3">
-                    <h5>Inprogress Requests</h5>
+                    <h5>Active Requests</h5>
                 </div>
                 {/* <div className="message alert text-center" role="alert">
                     <h5 className="alert-heading">There is no inprogress orders for your shops.</h5>
@@ -26,12 +18,9 @@ const InprogressRequest = () => {
                         <div className="col-xl-10 col-lg-9 col-md-9 col-sm-12">
                             <h5>Category : </h5>
                             <h6>Amount : </h6>
+                            <h6>Waste Collector : </h6>
                             <hr className="my-0 mt-3 mb-2" />
                             <p className="mb-0">Created On: 2023-01-03</p>
-                        </div>
-                        <div className="col-xl-2 col-lg-3 col-md-3 col-sm-12 text-right">
-                            <button className="btn w-100 mt-3" onClick={onRequestConfirm}>View</button>
-                            <button className="btn w-100 mt-3" >Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -39,5 +28,3 @@ const InprogressRequest = () => {
         </>
     )
 }
-
-export default InprogressRequest
