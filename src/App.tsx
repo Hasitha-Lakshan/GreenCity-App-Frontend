@@ -8,7 +8,7 @@ import './App.css';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Login } from './Pages/login/Login';
 import { CollectionCenterDetails } from './Pages/collection-center-details/CollectionCenterDetails';
-import { PickupRequest } from './Pages/CollectionRequest/collectionRequest_requirement/collectionRequest_requirement';
+import { PickupRequest } from './Pages/pickup-request/PickupRequest';
 import RequestDashboard from './Pages/CollectionRequest/collectionRequestDashboard/requestDashboard';
 import CollectionRequestDetails from './Pages/CollectionRequest/collectionRequestDetails/collectionRequestDetails';
 import Request from './Pages/Request/request';
@@ -64,11 +64,11 @@ export function App() {
           <Route path="collectionCenterDetails/:username" element={<CollectionCenterDetails />} />
           <Route path="profile/:username" element={<Profile />} />
           <Route path='pickupRequest' element={<PickupRequest />} />
+          <Route path='dashboard' element={<Request />} />
           <Route path='404' element={<Error />} />
 
           <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
           <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />
-          <Route path='customer/request' element={<Request />} />
           <Route path='customer/requestDetails' element={<Request_details />} />
           <Route path='customer/request/activeRequest' element={<CustomerActiveRequest />} />
           <Route path='customer/request/cancelRequest' element={<CustomerCancelRequest />} />
