@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './RequestDetails.css';
 import { RequestService } from '../../../shared/services/request.service';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { PickupRequestDetailsResponse } from '../../../shared/models/pickupRequestModel';
 import { formatDateTime } from '../../../config/request-headers';
 
@@ -14,6 +14,7 @@ export const RequestDetails = () => {
     const [successMessage, setSuccessMessage] = useState<String>();
     const [requestStatus, setRequestStatus] = useState('');
     const [time, setTime] = useState(new Date().getSeconds());
+    const navigate = useNavigate();
 
     useEffect(() => {
         /**
@@ -26,6 +27,8 @@ export const RequestDetails = () => {
                 if (response) {
                     if (response.status && typeof response.response === "object") {
                         setPickupRequestDetails(response.response as PickupRequestDetailsResponse);
+                    } else {
+                        navigate('/404');
                     }
                 }
             } catch (error) {
