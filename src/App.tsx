@@ -30,7 +30,7 @@ export function App() {
 
     if (loginStatus !== undefined && loginStatus === false) {
       // prevent unauthorized route access
-      if (location.pathname.includes('/profile/') || location.pathname.includes('/pickupRequest') || location.pathname.includes('/dashboard')) {
+      if (location.pathname.includes('/profile/') || location.pathname.includes('/pickupRequest') || location.pathname.includes('/dashboard') || location.pathname.includes('/dashboard/request/')) {
         navigate('/login');
       }
     }
