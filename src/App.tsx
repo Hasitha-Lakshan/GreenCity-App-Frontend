@@ -9,8 +9,6 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Login } from './Pages/login/Login';
 import { CollectionCenterDetails } from './Pages/collection-center-details/CollectionCenterDetails';
 import { PickupRequest } from './Pages/pickup-request/PickupRequest';
-import RequestDashboard from './Pages/CollectionRequest/collectionRequestDashboard/requestDashboard';
-import CollectionRequestDetails from './Pages/CollectionRequest/collectionRequestDetails/collectionRequestDetails';
 import { Dashboard } from './Pages/dashboard/Dashboard';
 import { RequestDetails } from './Pages/dashboard/request-details/RequestDetails';
 import { ScrollToTop } from './shared/components/scroll-to-top/ScrollToTop';
@@ -64,9 +62,7 @@ export function App() {
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='dashboard/request/:requestId' element={<RequestDetails />} />
           <Route path='404' element={<Error />} />
-
-          <Route path='collectionRequest/requestDashboard' element={<RequestDashboard />} />
-          <Route path='collectionRequest/customer1/requestDetails' element={<CollectionRequestDetails />} />
+          <Route path='*' element={<Error />} />
         </Routes>
       </div>
       <Footer />
